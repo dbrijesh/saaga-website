@@ -295,6 +295,40 @@ section {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: slideDown 0.8s ease-out;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 4px;
+  background: var(--gradient);
+  animation: expandWidth 1s ease-out 0.5s forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes expandWidth {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100px;
+  }
 }
 
 .section-subtitle {
@@ -310,6 +344,30 @@ section {
 /* About Section */
 .about {
   background: var(--gray-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(79, 172, 254, 0.1) 0%, transparent 70%);
+  animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
 }
 
 .about-grid {
@@ -345,11 +403,32 @@ section {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   border: 2px solid transparent;
   transition: all 0.3s ease;
+  animation: slideInFromRight 0.6s ease-out;
+}
+
+.vm-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.vm-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .vm-card:hover {
   border-color: var(--primary);
   box-shadow: 0 15px 40px rgba(37, 99, 235, 0.1);
+  transform: translateY(-5px);
 }
 
 .vm-card h3 {
@@ -366,6 +445,20 @@ section {
 /* Why Choose Us */
 .why-choose-us {
   background: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.why-choose-us::before {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
 }
 
 .why-grid {
@@ -373,6 +466,8 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 3rem;
+  position: relative;
+  z-index: 1;
 }
 
 .why-card {
@@ -382,6 +477,25 @@ section {
   text-align: center;
   transition: all 0.3s ease;
   border: 2px solid transparent;
+  animation: popIn 0.5s ease-out backwards;
+}
+
+.why-card:nth-child(1) { animation-delay: 0.1s; }
+.why-card:nth-child(2) { animation-delay: 0.2s; }
+.why-card:nth-child(3) { animation-delay: 0.3s; }
+.why-card:nth-child(4) { animation-delay: 0.4s; }
+.why-card:nth-child(5) { animation-delay: 0.5s; }
+.why-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .why-card:hover {
@@ -395,6 +509,29 @@ section {
   color: var(--primary);
   margin-bottom: 1.5rem;
   display: inline-block;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.why-card:hover .why-icon {
+  animation: spin 0.6s ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .why-card h3 {
@@ -411,6 +548,29 @@ section {
 /* Services Section */
 .services {
   background: var(--gray-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.services::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  animation: rotateGradient 20s linear infinite;
+}
+
+@keyframes rotateGradient {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 .services-grid {
@@ -418,6 +578,8 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2.5rem;
   margin-top: 3rem;
+  position: relative;
+  z-index: 1;
 }
 
 .service-card {
@@ -427,17 +589,43 @@ section {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   border: 2px solid transparent;
+  animation: slideInUp 0.6s ease-out backwards;
+}
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4) { animation-delay: 0.4s; }
+.service-card:nth-child(5) { animation-delay: 0.5s; }
+.service-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .service-card:hover {
   border-color: var(--primary);
   box-shadow: 0 20px 50px rgba(37, 99, 235, 0.15);
+  transform: translateY(-5px);
 }
 
 .service-icon {
   font-size: 3rem;
   color: var(--primary);
   margin-bottom: 1.5rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.2) rotate(5deg);
 }
 
 .service-card h3 {
@@ -468,13 +656,43 @@ section {
 /* Technologies */
 .technologies {
   background: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.technologies::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 50px,
+    rgba(79, 172, 254, 0.03) 50px,
+    rgba(79, 172, 254, 0.03) 100px
+  );
+  animation: moveStripes 20s linear infinite;
+}
+
+@keyframes moveStripes {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100px);
+  }
 }
 
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   margin: 3rem 0;
+  position: relative;
+  z-index: 1;
 }
 
 .tech-card {
@@ -487,16 +705,45 @@ section {
   border-radius: 20px;
   transition: all 0.3s ease;
   cursor: pointer;
+  border: 2px solid transparent;
+  animation: flipIn 0.6s ease-out backwards;
+}
+
+.tech-card:nth-child(1) { animation-delay: 0.1s; }
+.tech-card:nth-child(2) { animation-delay: 0.15s; }
+.tech-card:nth-child(3) { animation-delay: 0.2s; }
+.tech-card:nth-child(4) { animation-delay: 0.25s; }
+.tech-card:nth-child(5) { animation-delay: 0.3s; }
+.tech-card:nth-child(6) { animation-delay: 0.35s; }
+.tech-card:nth-child(7) { animation-delay: 0.4s; }
+.tech-card:nth-child(8) { animation-delay: 0.45s; }
+
+@keyframes flipIn {
+  from {
+    opacity: 0;
+    transform: rotateY(90deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateY(0deg);
+  }
 }
 
 .tech-card:hover {
   background: var(--white);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px) rotate(5deg);
+  border-color: var(--primary);
 }
 
 .tech-icon {
   font-size: 3.5rem;
   margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.tech-card:hover .tech-icon {
+  transform: scale(1.2);
 }
 
 .tech-card p {
@@ -515,6 +762,13 @@ section {
   background: var(--gray-light);
   padding: 2rem;
   border-radius: 15px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tech-category:hover {
+  border-color: var(--primary);
+  transform: translateX(10px);
 }
 
 .tech-category h4 {
@@ -531,12 +785,26 @@ section {
 /* Approach Section */
 .approach {
   background: var(--gray-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.approach::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 500px;
+  height: 500px;
+  background: conic-gradient(from 0deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1), transparent);
+  animation: rotate 30s linear infinite;
 }
 
 .approach-timeline {
   position: relative;
   margin-top: 3rem;
   padding: 2rem 0;
+  z-index: 1;
 }
 
 .approach-item {
@@ -545,6 +813,24 @@ section {
   gap: 3rem;
   margin-bottom: 3rem;
   align-items: start;
+  animation: fadeInLeft 0.8s ease-out backwards;
+}
+
+.approach-item:nth-child(1) { animation-delay: 0.1s; }
+.approach-item:nth-child(2) { animation-delay: 0.2s; }
+.approach-item:nth-child(3) { animation-delay: 0.3s; }
+.approach-item:nth-child(4) { animation-delay: 0.4s; }
+.approach-item:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .approach-number {
@@ -555,6 +841,16 @@ section {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-align: center;
+  animation: countPulse 2s ease-in-out infinite;
+}
+
+@keyframes countPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 .approach-content {
@@ -563,12 +859,32 @@ section {
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   border-left: 4px solid var(--primary);
+  transition: all 0.3s ease;
+}
+
+.approach-content:hover {
+  transform: translateX(10px);
+  box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
 }
 
 .approach-icon {
   font-size: 2.5rem;
   color: var(--primary);
   margin-bottom: 1rem;
+  display: inline-block;
+  animation: wiggle 1s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
 }
 
 .approach-content h3 {
@@ -625,23 +941,70 @@ section {
 
 /* Contact Section */
 .contact {
-  background: var(--gray-light);
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact::before,
+.contact::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite;
+}
+
+.contact::before {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+  top: -100px;
+  left: -100px;
+}
+
+.contact::after {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+  bottom: -150px;
+  right: -150px;
+  animation-delay: -4s;
 }
 
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-top: 3rem;
+  position: relative;
+  z-index: 1;
 }
 
 .contact-card {
-  background: var(--white);
+  background: var(--gray-light);
   padding: 2.5rem;
   border-radius: 20px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
+  border: 2px solid transparent;
+  animation: zoomIn 0.6s ease-out backwards;
+}
+
+.contact-card:nth-child(1) { animation-delay: 0.1s; }
+.contact-card:nth-child(2) { animation-delay: 0.2s; }
+.contact-card:nth-child(3) { animation-delay: 0.3s; }
+.contact-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .contact-card.full-width {
@@ -649,14 +1012,58 @@ section {
 }
 
 .contact-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary);
+  background: var(--white);
 }
 
 .contact-icon {
   font-size: 3rem;
   color: var(--primary);
   margin-bottom: 1.5rem;
+  display: inline-block;
+  animation: shake 3s ease-in-out infinite;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+}
+
+.contact-card:hover .contact-icon {
+  animation: rubberBand 0.8s;
+}
+
+@keyframes rubberBand {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.25, 0.75);
+  }
+  40% {
+    transform: scale(0.75, 1.25);
+  }
+  50% {
+    transform: scale(1.15, 0.85);
+  }
+  65% {
+    transform: scale(0.95, 1.05);
+  }
+  75% {
+    transform: scale(1.05, 0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .contact-card h3 {
@@ -772,8 +1179,12 @@ section {
   }
 
   .tech-grid {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
   }
 
   section {
