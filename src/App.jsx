@@ -256,8 +256,8 @@ function App() {
               <p>Years Experience</p>
             </div>
             <div className="stat">
-              <h3>20+</h3>
-              <p>Expert Engineers</p>
+              <h3>30</h3>
+              <p>Talented Innovators</p>
             </div>
             <div className="stat">
               <h3>4</h3>
@@ -290,10 +290,11 @@ function App() {
                   technology services across healthcare, retail, logistics, insurance, and emerging domains.
                 </p>
                 <p>
-                  Our team of 20+ skilled engineers, architects, and domain experts is passionate about
-                  transforming complex challenges into elegant, future-ready solutions. We believe in the
-                  power of technology as an enabler — not just to automate, but to innovate, elevate,
-                  and accelerate business growth.
+                  Our dynamic team of 30 talented innovators — including full-stack engineers, cloud architects,
+                  AI specialists, and domain experts — brings together diverse expertise and creative problem-solving.
+                  United by a passion for cutting-edge technology, our engineers thrive on transforming complex
+                  challenges into elegant, future-ready solutions. We believe in the power of technology as
+                  an enabler — not just to automate, but to innovate, elevate, and accelerate business growth.
                 </p>
               </div>
               <div className="vision-mission">
