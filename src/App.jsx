@@ -8,6 +8,7 @@ import {
 } from 'react-icons/fa'
 import { SiMongodb, SiKubernetes, SiTensorflow, SiMysql, SiPostgresql } from 'react-icons/si'
 import './App.css'
+import saagaLogo from './assets/saaga-logo.png'
 
 function App() {
   const [scrolled, setScrolled] = useState(false)
@@ -177,7 +178,7 @@ function App() {
               className="logo"
               whileHover={{ scale: 1.05 }}
             >
-              Saaga Infotech
+              <img src={saagaLogo} alt="Saaga Infotech" />
             </motion.div>
             <div className="nav-links">
               <a href="#about">About</a>
